@@ -25,7 +25,11 @@ class App extends Component {
   }
 
   getBitcoinData () {
-    fetch(`https://api.coindesk.com/v1/bpi/historical/close.json?currency=${this.state.currency}`)
+    // fetch(`https://api.coindesk.com/v1/bpi/historical/close.json?currency=${this.state.currency}`)
+    //   .then(response => response.json())
+    //   .then(historicalData => this.setState({historicalData}))
+    //   .catch(e => e)
+    fetch(`http://coindesk-demo-api.server.that.only.exists.for.development.org?currency=${this.state.currency}`)
       .then(response => response.json())
       .then(historicalData => this.setState({historicalData}))
       .catch(e => e)
