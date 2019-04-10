@@ -45,3 +45,9 @@ a.link:hover {
 .select-container select:focus {
   outline: none;
 }
+
+.logo {
+  font-size: 70px;
+  text-align: center;
+  font-family: 'Bungee', cursive;
+}

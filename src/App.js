@@ -8,8 +8,6 @@ import currencies from './supported-currencies.json';
 
 console.log(currencies)
 
-const REALTIME_BITCOIN_URL = "https://api.coindesk.com/v1/bpi/currentprice.json"
-
 class App extends Component {
   constructor (props) {
     super(props)
@@ -27,7 +25,11 @@ class App extends Component {
   }
 
   getBitcoinData () {
-    fetch(`https://api.coindesk.com/v1/bpi/historical/close.json?currency=${this.state.currency}`)
+    // fetch(`https://api.coindesk.com/v1/bpi/historical/close.json?currency=${this.state.currency}`)
+    //   .then(response => response.json())
+    //   .then(historicalData => this.setState({historicalData}))
+    //   .catch(e => e)
+    fetch(`http://coindesk-demo-api.server.that.only.exists.for.development.org?currency=${this.state.currency}`)
       .then(response => response.json())
       .then(historicalData => this.setState({historicalData}))
       .catch(e => e)
@@ -76,7 +78,8 @@ class App extends Component {
     if (this.state.historicalData) {
       return (
         <div className="app">
-          <Header title="BITCOIN PRICE INDEX" />
+         <div className="logo">Customized Logo</div> 
+         <Header title="BITCOIN PRICE INDEX" />
 
           <div className="select-container">
             <span style={{fontSize: 18, fontFamily: 'Bungee'}}> Select your currency: </span>
