@@ -95,6 +95,7 @@ class App extends Component {
           <div style={{marginTop: 10}}>
             <Line data={this.formatChartData()} height={250} />
           </div>
+          <div className="logo">Small logo</div>
         </div>
       )
     }
