@@ -5,6 +5,13 @@ import _ from 'lodash';
 import { Line, Chart } from 'react-chartjs-2';
 import moment from 'moment';
 import currencies from './supported-currencies.json';
+import WebfontLoader from '@dr-kobros/react-webfont-loader';
+
+let config = {
+  google: {
+    families: ['Droid Sans', 'sans-serif']
+  }
+};
 
 console.log(currencies)
 
@@ -25,11 +32,7 @@ class App extends Component {
   }
 
   getBitcoinData () {
-    // fetch(`https://api.coindesk.com/v1/bpi/historical/close.json?currency=${this.state.currency}`)
-    //   .then(response => response.json())
-    //   .then(historicalData => this.setState({historicalData}))
-    //   .catch(e => e)
-    fetch(`http://coindesk-demo-api.server.that.only.exists.for.development.org?currency=${this.state.currency}`)
+    fetch(`https://api.coindesk.com/v1/bpi/historical/close.json?currency=${this.state.currency}`)
       .then(response => response.json())
       .then(historicalData => this.setState({historicalData}))
       .catch(e => e)
@@ -77,6 +80,7 @@ class App extends Component {
   render() {
     if (this.state.historicalData) {
       return (
+	<WebfontLoader config={config}>
         <div className="app">
          <div className="logo">Customized Logo</div> 
          <Header title="BITCOIN PRICE INDEX" />
@@ -99,6 +103,7 @@ class App extends Component {
             <Line data={this.formatChartData()} height={250} />
           </div>
         </div>
+	</WebfontLoader>
       )
     }
 
